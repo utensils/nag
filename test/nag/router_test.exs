@@ -2,6 +2,9 @@ defmodule Nag.RouterTest do
   use ExUnit.Case
   use Plug.Test
 
+  import ExUnit.CaptureLog
+  import Plug.Conn, only: [put_req_header: 3]
+
   alias Nag.Router
 
   @opts Router.init([])
@@ -14,6 +17,21 @@ defmodule Nag.RouterTest do
     assert conn.state == :sent
     assert conn.status == 200
     assert json_response(conn)["msg"] =~ "nothing here to see,"
+  end
+
+  test "receive thanks on webhook post" do
+    req_body = Poison.encode!(%{"hello" => "world"})
+
+    capture_log(fn ->
+      conn = :post
+              |> conn("/webhook", req_body)
+              |> put_req_header("content-type", "application/json")
+              |> Router.call(@opts)
+
+      assert conn.state == :sent
+      assert conn.status == 201
+      assert json_response(conn)["msg"] =~ "thank you"
+   end) =~ "success"
   end
 
   test "receive an error on 404" do
