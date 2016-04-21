@@ -11,7 +11,8 @@ defmodule Nag.Mixfile do
   end
 
   def application do
-    [applications: [:cowboy, :logger, :plug, :porcelain]]
+    [applications: [:cowboy, :logger, :plug, :porcelain],
+      mod: {Nag, []}]
   end
 
   defp deps do
