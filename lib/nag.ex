@@ -1,0 +1,2 @@
+defmodule Nag do
+end
