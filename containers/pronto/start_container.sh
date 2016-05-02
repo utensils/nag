@@ -6,7 +6,8 @@ DEFAULT_BRANCH='origin/master'
 export PATH=$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH
 
 BRANCH=${MASTER_BRANCH:-$DEFAULT_BRANCH}
-GIT_URL=https://$GITHUB_ACCESS_TOKEN@github.com/wombatsecurity/$REPO.git
+GIT_URL=https://$GITHUB_ACCESS_TOKEN@github.com/$REPO.git
+
 git clone -b $WORKING_BRANCH $GIT_URL app \
   && cd app \
   && GITHUB_SLUG=$REPO \
