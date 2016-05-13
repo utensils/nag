@@ -1,10 +1,12 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'pronto', github: 'doomspork/pronto', branch: 'consolidated-messaging'
-gem 'pronto-brakeman'
-gem 'pronto-coffeelint'
-gem 'pronto-fasterer'
-gem 'pronto-flay'
-gem 'pronto-rails_best_practices'
-gem 'pronto-reek'
-gem 'pronto-rubocop'
+gem "flay", "2.7.0"
+gem "pronto", github: "doomspork/pronto", branch: "consolidated-messaging"
+gem "pronto-brakeman"
+gem "pronto-coffeelint"
+gem "pronto-credo", github: "doomspork/pronto-credo", branch: "upgrade-runner"
+gem "pronto-fasterer"
+gem "pronto-flay"
+gem "pronto-rails_best_practices"
+gem "pronto-reek"
+gem "pronto-rubocop"
