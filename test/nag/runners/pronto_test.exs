@@ -19,9 +19,9 @@ defmodule Nag.Runners.ProntoTest do
     number = 1
     payload = %{"action" => "opened",
                 "pull_request" => %{
-                  "head" => %{"ref" => branch},
+                  "head" => %{"ref" => branch, "repo" => %{"full_name" => repo}},
                   "number" => number,
-                  "repo" => %{"full_name" => repo}
+                  "state" => "open"
                 }}
 
     log = capture_log(fn ->
