@@ -12,9 +12,10 @@ defmodule Nag.Runners.Pronto do
   end
   def run(_), do: Logger.info("unsupported payload")
 
-  defp log_result(%{out: out, status: status}) do
-    Logger.info("shell finished #{Integer.to_string(status)} #{out}")
-  end
+  defp log_result(%{out: out, status: status}),
+    do: Logger.info("shell finished #{Integer.to_string(status)} #{out}")
+  defp log_result(out),
+    do: Logger.info(out)
 
   defp pronto_cmd(repo, branch, number) do
     access_token = System.get_env("GITHUB_ACCESS_TOKEN")
