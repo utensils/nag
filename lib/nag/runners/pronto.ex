@@ -13,7 +13,7 @@ defmodule Nag.Runners.Pronto do
   def run(_), do: Logger.info("unsupported payload")
 
   defp log_result(%{out: out, status: status}) do
-    Logger.debug("shell finished #{Integer.to_string(status)} #{out}")
+    Logger.info("shell finished #{Integer.to_string(status)} #{out}")
   end
 
   defp pronto_cmd(repo, branch, number) do
