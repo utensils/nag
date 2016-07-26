@@ -4,7 +4,6 @@ defmodule Nag.Router do
   use Plug.Router
 
   alias Nag.Runner
-  alias Plug.Conn
 
   plug :match
   plug Plug.Parsers, parsers: [:json], json_decoder: Poison
