@@ -6,7 +6,7 @@ DEFAULT_BRANCH='origin/master'
 export PATH=$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH
 
 BRANCH=${MASTER_BRANCH:-$DEFAULT_BRANCH}
-GIT_URL=https://$GITHUB_ACCESS_TOKEN@github.com/$REPO.git
+GIT_URL=https://$GITHUB_ACCESS_TOKEN@github.com/$REPO \
 
 git clone $GIT_URL repo \
   && cd repo \
