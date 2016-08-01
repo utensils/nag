@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
-gem "pronto"
+gem "pronto", github: "mmozuras/pronto"
 gem "pronto-brakeman"
 gem "pronto-coffeelint"
-gem "pronto-credo", github: "doomspork/pronto-credo", branch: "upgrade-runner"
+gem "pronto-credo", github: "carakan/pronto-credo"
 gem "pronto-fasterer"
 gem "pronto-flay"
 gem "pronto-rails_best_practices"
