@@ -6,26 +6,40 @@ A microservice to nag you about code quality; [Pronto](https://github.com/mmozur
 
 ## Getting Started
 
-1. Install Docker
-
-2. Clone the project:
+1. Clone the project:
 
 	```shell
 	$ git clone git@github.com:wombatsecurity/nag.git
 	$ cd nag
 	```
 
-3. Build and run container:
+2. Install dependencies:
+
+  ```shell
+  $ mix deps.get
+  ```
+
+3. Build and run:
+
+  ```shell
+  $ GITHUB_ACCESS_TOKEN= mix run --no-halt
+  ```
+
+## Getting Started (with Docker)
+
+1. Install Docker
+
+2. Build and run container:
 
 	```shell
-	$ docker build -t nag .
-	$ docker run -d -p 4000:4000 -v /var/run/docker.sock:/tmp/docker.sock -e GITHUB_ACCESS_TOKEN= wombatsecurity/nag
+	$ docker build -t wombatsecurity/nag .
+	$ docker run -d -p 4000:4000 -v -e GITHUB_ACCESS_TOKEN= wombatsecurity/nag
 	```
 
 	If you've made changes and docker isn't picking them up, use the `--no-cache` flag when building:
 
 	```shell
-	$ docker build --no-cache -t nag .
+	$ docker build --no-cache -t wombatsecurity/nag .
 	```
 
 ## Lifecycle
@@ -49,9 +63,9 @@ Pronto does not yet support Java but that's something we can contribute! Pronto 
 
 ## Running Locally
 
-As it stands today, Nag relies on GitHub webhooks to know when and what to analyze.  During local development [Postman](https://getpostman.com) (or any REST  client) can be used to fake webhook requests to our local Nag server; local requests should target [localhost:4000/webhook](http://localhost:4000/webhook).
+As it stands today, Nag relies on GitHub webhooks to know when and what to analyze.  During local development [Postman](https://getpostman.com) (or any REST  client) can be used to fake webhook requests to our local Nag server.  Local requests should target [localhost:4000/webhook](http://localhost:4000/webhook).
 
-There are only a handful of required fields for Nag so a minimal only needs those values:
+There are only a handful of fields required by Nag so a minimal request without those values will suffice:
 
 ```json
 {
@@ -68,5 +82,3 @@ There are only a handful of required fields for Nag so a minimal only needs thos
   }
 }
 ```
-
-Nag is currently being developed by @doomspork (Sean Callan).  If you have comments or questions feel free to reach out to him directly.
