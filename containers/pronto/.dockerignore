@@ -1,6 +1,0 @@
-_build/
-.git/
-deps/
-containers/
-test/
-lifecycle.png

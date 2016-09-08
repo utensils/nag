@@ -2,6 +2,7 @@ defmodule Nag.Runners.Pronto do
   require Logger
 
   @shell Application.get_env(:nag, :shell)
+  @script_path "scripts/pronto.sh"
 
   def run(%{"action" => action, "pull_request" => pull_request})
     when action in ["opened", "synchronize"] do
@@ -19,7 +20,13 @@ defmodule Nag.Runners.Pronto do
 
   defp pronto_cmd(repo, branch, number) do
     access_token = System.get_env("GITHUB_ACCESS_TOKEN")
-    ~s(docker run -t -e "GITHUB_ACCESS_TOKEN=#{access_token}" -e "PULL_REQUEST_ID=#{number}" -e "REPO=#{repo}" -e "WORKING_BRANCH=#{branch}" wombatsecurity/nag-pronto)
+    """
+    GITHUB_ACCESS_TOKEN=#{access_token} \
+    PULL_REQUEST_ID=#{number} \
+    REPO=#{repo} \
+    WORKING_BRANCH=#{branch} \
+    ./#{@script_path}
+    """
   end
 
   defp run_pronto(repo, branch, number) do
