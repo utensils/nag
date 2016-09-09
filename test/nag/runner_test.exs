@@ -8,7 +8,7 @@ defmodule Nag.RunnerTest do
 
   test "starts the list of runners" do
     log = capture_log(fn ->
-      Runner.start(%{})
+      Runner.run(%{})
       :timer.sleep(10)
     end)
 

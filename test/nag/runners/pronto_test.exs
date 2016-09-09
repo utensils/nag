@@ -29,8 +29,6 @@ defmodule Nag.Runners.ProntoTest do
     end)
 
     assert log =~ "shell finished 0"
-    assert log =~ ~s("PULL_REQUEST_ID=#{number}" -e "REPO=#{repo}" -e "WORKING_BRANCH=#{branch}" pronto)
+    assert log =~ ~s(WORKING_BRANCH=test_branch ./scripts/pronto.sh)
   end
 end
-
-

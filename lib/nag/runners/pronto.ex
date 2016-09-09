@@ -13,7 +13,7 @@ defmodule Nag.Runners.Pronto do
   end
   def run(_), do: Logger.info("unsupported payload")
 
-  defp log_result(%{err: nil, out: out, status: status}),
+  defp log_result(%{out: out, status: status}),
     do: Logger.info("shell finished #{Integer.to_string(status)} #{out}")
   defp log_result(%{err: error}),
     do: Logger.info(error)

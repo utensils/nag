@@ -28,7 +28,7 @@ defmodule Nag.Router do
   end
 
   defp run({conn, payload}) do
-    Task.async(Runner, :start, [payload])
+    Task.async(Runner, :run, [payload])
     conn
   end
 end
