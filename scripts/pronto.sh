@@ -5,7 +5,7 @@ DEFAULT_BRANCH='origin/master'
 
 BRANCH=${MASTER_BRANCH:-$DEFAULT_BRANCH}
 GIT_URL=https://$GITHUB_ACCESS_TOKEN@github.com/$REPO
-REPO_DIR="${REPO}#${PULL_REQUEST_ID}"
+REPO_DIR="${REPO/\//_}#${PULL_REQUEST_ID}"
 
 git clone $GIT_URL $REPO_DIR \
   && cd $REPO_DIR \
@@ -16,4 +16,4 @@ git clone $GIT_URL $REPO_DIR \
      bundle exec pronto run -f github_pr -c $BRANCH
 
 # Clean-up
-rm -rf "${REPO_DIR}"
+cd .. && rm -rf "${REPO_DIR}"
