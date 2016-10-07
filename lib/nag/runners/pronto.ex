@@ -1,8 +1,9 @@
 defmodule Nag.Runners.Pronto do
   require Logger
 
-  @shell Application.get_env(:nag, :shell)
-  @script_path "scripts/pronto.sh"
+  alias Nag.Shell
+
+  @script_path "./scripts/pronto.sh"
 
   def run(%{"action" => action, "pull_request" => pull_request})
     when action in ["opened", "synchronize"] do
@@ -14,27 +15,26 @@ defmodule Nag.Runners.Pronto do
   def run(_), do: Logger.info("unsupported payload")
 
   defp log_result(%{out: out, status: status}),
-    do: Logger.info("shell finished #{Integer.to_string(status)} #{out}")
+    do: Logger.debug("Shell finished #{Integer.to_string(status)} #{out}")
   defp log_result(%{err: error}),
-    do: Logger.info(error)
+    do: Logger.error(error)
 
   defp pronto_cmd(repo, branch, number) do
     access_token = System.get_env("GITHUB_ACCESS_TOKEN")
+
     """
     GITHUB_ACCESS_TOKEN=#{access_token} \
     PULL_REQUEST_ID=#{number} \
     REPO=#{repo} \
     WORKING_BRANCH=#{branch} \
-    ./#{@script_path}
+    #{@script_path}
     """
   end
 
   defp run_pronto(repo, branch, number) do
     repo
     |> pronto_cmd(branch, number)
-    |> run_cmd
+    |> Shell.run
     |> log_result
   end
-
-  defp run_cmd(cmd), do: apply(@shell, :shell, [cmd])
 end
