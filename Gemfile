@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "pronto", github: "mmozuras/pronto"
+gem "pronto", "~> 0.7" 
 gem "pronto-brakeman"
 gem "pronto-coffeelint"
 gem "pronto-credo", github: "carakan/pronto-credo"
