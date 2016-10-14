@@ -3,11 +3,10 @@ defmodule Nag do
 
   require Logger
 
-  alias Nag.Shell
+  alias Nag.{Config, Shell}
 
   @cowboy_opts [ip: {0, 0, 0, 0}, port: 4000]
   @file_permission 0o755
-  @script "./scripts/pronto.sh"
 
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
@@ -38,9 +37,9 @@ defmodule Nag do
     install_gems
   end
 
-  defp chmod_script, do:
-    File.chmod(@script, @file_permission)
+  defp chmod_script,
+    do: File.chmod(Config.script_path, @file_permission)
 
-  defp install_gems, do:
-    Shell.run("bundle install")
+  defp install_gems,
+    do: Shell.run("bundle install")
 end

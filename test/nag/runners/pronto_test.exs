@@ -28,7 +28,8 @@ defmodule Nag.Runners.ProntoTest do
       Pronto.run(payload)
     end)
 
-    assert log =~ "shell finished 0"
-    assert log =~ ~s(WORKING_BRANCH=test_branch ./scripts/pronto.sh)
+    assert log =~ "Shell finished 0"
+    assert log =~ "REPO=test/repo WORKING_BRANCH=test_branch"
+    assert log =~ "/scripts/pronto.sh"
   end
 end

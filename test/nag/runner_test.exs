@@ -12,7 +12,7 @@ defmodule Nag.RunnerTest do
       :timer.sleep(10)
     end)
 
-    assert log =~ "starting 1 runners"
+    assert log =~ "Starting 1 runner(s)"
     assert log =~ "success"
   end
 end

@@ -13,6 +13,7 @@ defmodule Nag.Mixfile do
 
   def application do
     [applications: [:cowboy, :logger, :plug, :porcelain],
+     included_applications: [:poison],
       mod: {Nag, []}]
   end
 
@@ -20,7 +21,10 @@ defmodule Nag.Mixfile do
     [{:cowboy, "~> 1.0.0"},
       {:plug, "~> 1.1"},
       {:poison, "~> 2.1"},
-      {:porcelain, "~> 2.0"}]
+      {:porcelain, "~> 2.0"},
+
+      # Deploymenys
+      {:distillery, ">= 0.0.0"}]
   end
 
   defp package do
