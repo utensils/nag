@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
+gem "activesupport", "4.2.7"
 gem "pronto", "~> 0.7" 
 gem "pronto-brakeman"
-gem "pronto-coffeelint"
-gem "pronto-credo", github: "carakan/pronto-credo"
+gem "pronto-credo", "~> 0.0.4" 
 gem "pronto-fasterer"
 gem "pronto-flay"
 gem "pronto-rails_best_practices"
