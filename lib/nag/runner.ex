@@ -1,4 +1,8 @@
 defmodule Nag.Runner do
+  @moduledoc """
+  Processes requests through a runner pipeline
+  """
+
   require Logger
 
   @runners Application.get_env(:nag, :runners, [])

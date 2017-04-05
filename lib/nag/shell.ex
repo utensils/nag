@@ -1,4 +1,7 @@
 defmodule Nag.Shell do
+  @moduledoc """
+  An interface to the system shell
+  """
 
   require Logger
 

@@ -1,9 +1,10 @@
 use Mix.Config
 
 config :nag,
+  github_token: "${GITHUB_ACCESS_TOKEN}",
   runners: [Nag.Runners.Pronto],
-  shell: Nag.Shell.Porcelain,
-  github_token: "${GITHUB_ACCESS_TOKEN}"
+  script_path: "scripts/pronto.sh",
+  shell: Nag.Shell.Porcelain
 
 config :logger,
   backends: [:console],
