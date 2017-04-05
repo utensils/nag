@@ -1,0 +1,7 @@
+language: elixir
+sudo: required
+elixir: 1.4.1
+otp_release: 19.1
+script:
+  - MIX_ENV=test mix test
+  - mix credo --strict

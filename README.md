@@ -1,4 +1,4 @@
-# Nag
+# Nag [![Build Status](https://travis-ci.org/doomspork/nag.svg?branch=master)](https://travis-ci.org/doomspork/nag)
 
 > The mother-in-law of linters
 

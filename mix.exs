@@ -24,7 +24,10 @@ defmodule Nag.Mixfile do
       {:porcelain, "~> 2.0"},
 
       # Deploymenys
-      {:distillery, ">= 0.0.0"}]
+      {:distillery, ">= 0.0.0"},
+
+      # Dev & Test
+      {:credo, "~> 0.7"}]
   end
 
   defp package do
