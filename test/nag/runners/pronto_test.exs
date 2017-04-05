@@ -10,7 +10,7 @@ defmodule Nag.Runners.ProntoTest do
       Pronto.run(%{})
     end)
 
-    assert log =~ "unsupported payload"
+    assert log =~ "Unsupported payload"
   end
 
   test "logs success on known messages" do
@@ -30,6 +30,6 @@ defmodule Nag.Runners.ProntoTest do
 
     assert log =~ "Shell finished 0"
     assert log =~ "REPO=test/repo WORKING_BRANCH=test_branch"
-    assert log =~ "/scripts/pronto.sh"
+    assert log =~ "scripts/pronto.sh"
   end
 end
