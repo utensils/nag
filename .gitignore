@@ -107,5 +107,4 @@ Gemfile.lock
 /doc
 erl_crash.dump
 *.ez
-
-/rel/nag
+/releases
