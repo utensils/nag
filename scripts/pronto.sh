@@ -10,10 +10,11 @@ REPO_DIR="${REPO/\//_}#${PULL_REQUEST_ID}"
 git clone $GIT_URL $REPO_DIR \
   && cd $REPO_DIR \
   && git checkout $WORKING_BRANCH \
-  && GITHUB_SLUG=$REPO \
-     GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN \
+  && PRONTO_CONSOLIDATE_COMMENTS=true \
+     PRONTO_GITHUB_SLUG=$REPO \
+     PRONTO_GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN \
      PULL_REQUEST_ID=$PULL_REQUEST_ID \
-     bundle exec pronto run -f github_pr -c $BRANCH
+     bundle exec pronto run -f github_status github_pr -c $BRANCH
 
 # Clean-up
 cd .. && rm -rf "${REPO_DIR}"

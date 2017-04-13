@@ -1,5 +1,7 @@
 defmodule Nag.Router do
-  require Logger
+  @moduledoc """
+  Basic HTTP router
+  """
 
   use Plug.Router
 

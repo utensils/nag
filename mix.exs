@@ -4,30 +4,33 @@ defmodule Nag.Mixfile do
   def project do
     [app: :nag,
       version: "1.1.0",
-      elixir: "~> 1.3",
+      elixir: "~> 1.4",
       package: package(),
-      build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
       deps: deps()]
   end
 
   def application do
-    [applications: [:cowboy, :logger, :plug, :porcelain],
-     included_applications: [:poison],
-      mod: {Nag, []}]
+    [
+      extra_applications: [:logger],
+      mod: {Nag, []}
+    ]
   end
 
   defp deps do
-    [{:cowboy, "~> 1.0.0"},
+    [
+      {:cowboy, "~> 1.0.0"},
+      {:logger_file_backend, ">= 0.0.0"},
       {:plug, "~> 1.1"},
       {:poison, "~> 2.1"},
       {:porcelain, "~> 2.0"},
 
-      # Deploymenys
+      # Deployments
       {:distillery, ">= 0.0.0"},
 
       # Dev & Test
-      {:credo, "~> 0.7"}]
+      {:credo, "~> 0.7"}
+    ]
   end
 
   defp package do

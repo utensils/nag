@@ -7,7 +7,6 @@ defmodule Nag.Runners.Pronto do
 
   alias Nag.Shell
 
-  @access_token Application.get_env(:nag, :github_token)
   @script_path Application.get_env(:nag, :script_path)
 
   def run(%{"action" => action, "pull_request" => pull_request})
@@ -19,9 +18,12 @@ defmodule Nag.Runners.Pronto do
   end
   def run(_), do: Logger.info("Unsupported payload")
 
+  defp access_token,
+    do: Application.get_env(:nag, :github_token)
+
   defp pronto_cmd(repo, branch, number) do
     """
-    GITHUB_ACCESS_TOKEN=#{@access_token} \
+    GITHUB_ACCESS_TOKEN=#{access_token()} \
     PULL_REQUEST_ID=#{number} \
     REPO=#{repo} \
     WORKING_BRANCH=#{branch} \
