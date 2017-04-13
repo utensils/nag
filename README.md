@@ -34,9 +34,9 @@ $ docker run -v ~/Projects/nag/releases:/app/_build/prod/rel elixir-build mix re
 
 ## Testing Nag locally
 
-As it stands today, Nag relies on GitHub webhooks to know when and what to analyze.  During local development [Postman](https://getpostman.com) (or any REST  client) can be used to fake webhook requests to our local Nag server.  Local requests should target [localhost:4000/webhook](http://localhost:4000/webhook).
+As it stands today, Nag relies on GitHub webhooks to know when and what to analyze.  During local development [Postman](https://getpostman.com) (or any REST client) can be used to fake webhook requests to our local Nag server.  Local requests should target [localhost:4000/webhook](http://localhost:4000/webhook).
 
-There are only a handful of fields required by Nag so a minimal request without those values will suffice:
+There are only a handful of fields required by Nag so a minimal request with only those values will suffice:
 
 ```json
 {
@@ -47,7 +47,7 @@ There are only a handful of fields required by Nag so a minimal request without 
     "head": {
       "ref": "branch-name",
       "repo": {
-        "full_name": "wombatsecurity/repo-name"
+        "full_name": "doomspork/repo-name"
       }
     }
   }
